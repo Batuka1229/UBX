@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<style>
+.negative{
+color: red;}
+.positive{color:#5DBB63}
+</style>
+</head>
+<body>
+<div class="price-change"><?php echo $decimelformatter->format($company_data->lastprice-$openprice);?>₮ <span class = "span">(<?php echo $percentformatter->format(($company_data->lastprice-$openprice)/$openprice);?>)</span></div>
+<script>
+				 $('.price-change').each(function() {
+  if (parseFloat($(this).text()) < -0.1) {
+    $(this).addClass('negative');
+  } else if (parseFloat($(this).text()) >= 0.1) {
+    $(this).addClass('positive');
+  };
+});
+</script>
